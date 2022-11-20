@@ -17,8 +17,12 @@
             app:switchBackBorder="@drawable/back_border"
             app:switchOnlayout="@drawable/on_layout"
             app:switchOfflayout="@drawable/off_layout"
+            app:switchOnImage="@drawable/on"
+            app:switchOffImage="@drawable/off"
             app:switchBackOnText="on"
-            app:switchBackOffText="off"/>
+            app:switchBackOffText="off"
+            app:switchOnText="on"
+            app:switchOffText="off"/>
 
     </RelativeLayout>
 

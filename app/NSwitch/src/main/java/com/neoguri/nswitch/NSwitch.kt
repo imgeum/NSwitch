@@ -32,6 +32,9 @@ class NSwitch @JvmOverloads constructor(
     private var mOnLayout: Drawable? = null
     private var mOffLayout: Drawable? = null
 
+    private var mOnImage: Drawable? = null
+    private var mOffImage: Drawable? = null
+
     private var mOnText = ""
     private var mOffText = ""
 
@@ -53,9 +56,20 @@ class NSwitch @JvmOverloads constructor(
             mBackBorder = typedArr.getDrawable(R.styleable.NSwitch_switchBackBorder)
             mOnLayout = typedArr.getDrawable(R.styleable.NSwitch_switchOnlayout)
             mOffLayout = typedArr.getDrawable(R.styleable.NSwitch_switchOfflayout)
+            mOnImage = typedArr.getDrawable(R.styleable.NSwitch_switchOnImage)
+            mOffImage = typedArr.getDrawable(R.styleable.NSwitch_switchOffImage)
 
-            mOnText = typedArr.getString(R.styleable.NSwitch_switchBackOnText).toString()
-            mOffText = typedArr.getString(R.styleable.NSwitch_switchBackOffText).toString()
+            mOnText = if(typedArr.getString(R.styleable.NSwitch_switchOnText) == null){
+                ""
+            } else {
+                typedArr.getString(R.styleable.NSwitch_switchOnText)!!
+            }
+
+            mOffText = if(typedArr.getString(R.styleable.NSwitch_switchOffText) == null){
+                ""
+            } else {
+                typedArr.getString(R.styleable.NSwitch_switchOffText)!!
+            }
 
             val infService = Context.LAYOUT_INFLATER_SERVICE
             val li = getContext().getSystemService(infService) as LayoutInflater
@@ -72,10 +86,18 @@ class NSwitch @JvmOverloads constructor(
             mLockTxt = v.findViewById(R.id.lock_txt)
 
             mLockBg.background = mOnLayout
-            mLockImg.setBackgroundResource(R.drawable.on)
+            mLockImg.background = mOnImage
 
-            mStandardStart.text = mOnText
-            mStandardEnd.text = mOffText
+            mStandardStart.text = if(typedArr.getString(R.styleable.NSwitch_switchBackOnText) == null){
+                ""
+            } else {
+                typedArr.getString(R.styleable.NSwitch_switchBackOnText)!!
+            }
+            mStandardEnd.text = if(typedArr.getString(R.styleable.NSwitch_switchBackOffText) == null){
+                ""
+            } else {
+                typedArr.getString(R.styleable.NSwitch_switchBackOffText)!!
+            }
             mLockTxt.text = mOnText
 
             mStandardStart.post {
@@ -132,7 +154,7 @@ class NSwitch @JvmOverloads constructor(
                     mBtnOpenClose.translationX.toInt() in xStart..xEnd -> {
                         if(mBtnOpenClose.translationX.toInt() < xCenter){
                             mLockBg.background = mOnLayout
-                            mLockImg.setBackgroundResource(R.drawable.on)
+                            mLockImg.background = mOnImage
                             mLockTxt.text = mOnText
                             if(mBtnOpenClose.translationX.toInt() < xCenter - 20){
                                 blue = (xCenter - mBtnOpenClose.translationX.toInt()).toFloat()
@@ -140,7 +162,7 @@ class NSwitch @JvmOverloads constructor(
                             }
                         } else if(xCenter < mBtnOpenClose.translationX.toInt()){
                             mLockBg.background = mOffLayout
-                            mLockImg.setBackgroundResource(R.drawable.off)
+                            mLockImg.background = mOffImage
                             mLockTxt.text = mOffText
                             if(mBtnOpenClose.translationX.toInt() > xCenter + 20){
                                 gray = (mBtnOpenClose.translationX.toInt()).toFloat() - xCenter
@@ -168,7 +190,7 @@ class NSwitch @JvmOverloads constructor(
             mBtnOpenClose.alpha = 1f
             mBtnOpenClose.translationX = xStart.toFloat()
             mLockBg.background = mOnLayout
-            mLockImg.setBackgroundResource(R.drawable.on)
+            mLockImg.background = mOnImage
             mLockTxt.text = mOnText
         }.start()
     }
@@ -178,7 +200,7 @@ class NSwitch @JvmOverloads constructor(
             mBtnOpenClose.alpha = 1f
             mBtnOpenClose.translationX = xEnd.toFloat()
             mLockBg.background = mOffLayout
-            mLockImg.setBackgroundResource(R.drawable.off)
+            mLockImg.background = mOffImage
             mLockTxt.text = mOffText
         }.start()
     }

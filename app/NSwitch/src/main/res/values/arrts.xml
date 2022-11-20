@@ -4,7 +4,11 @@
         <attr name="switchBackBorder" format="integer"/>
         <attr name="switchOnlayout" format="integer"/>
         <attr name="switchOfflayout" format="integer"/>
+        <attr name="switchOnImage" format="integer"/>
+        <attr name="switchOffImage" format="integer"/>
         <attr name="switchBackOnText" format="string"/>
         <attr name="switchBackOffText" format="string"/>
+        <attr name="switchOnText" format="string"/>
+        <attr name="switchOffText" format="string"/>
     </declare-styleable>
 </resources>
