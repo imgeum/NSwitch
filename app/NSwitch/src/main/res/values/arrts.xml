@@ -2,13 +2,21 @@
 <resources>
     <declare-styleable name="NSwitch">
         <attr name="switchBackBorder" format="integer"/>
-        <attr name="switchOnlayout" format="integer"/>
-        <attr name="switchOfflayout" format="integer"/>
-        <attr name="switchOnImage" format="integer"/>
-        <attr name="switchOffImage" format="integer"/>
-        <attr name="switchBackOnText" format="string"/>
-        <attr name="switchBackOffText" format="string"/>
-        <attr name="switchOnText" format="string"/>
-        <attr name="switchOffText" format="string"/>
+        <attr name="switchLayoutOn" format="integer"/>
+        <attr name="switchLayoutOff" format="integer"/>
+        <attr name="switchImageOn" format="integer"/>
+        <attr name="switchImageOff" format="integer"/>
+        <attr name="switchBackTextOn" format="string"/>
+        <attr name="switchBackTextOff" format="string"/>
+        <attr name="switchTextOn" format="string"/>
+        <attr name="switchTextOff" format="string"/>
+        <attr name="switchBackTextSize" format="dimension"/>
+        <attr name="switchBackTextColor" format="color"/>
+        <attr name="switchTextSize" format="dimension"/>
+        <attr name="switchTextColor" format="color"/>
+        <attr name="switchMode" format="enum">
+            <enum name="NONE" value="0"/>
+            <enum name="CENTER_GONE" value="1"/>
+        </attr>
     </declare-styleable>
 </resources>
