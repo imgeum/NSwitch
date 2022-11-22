@@ -219,10 +219,24 @@ class NSwitch @JvmOverloads constructor(
     }
 
     fun setCheck(check: Boolean) {
-        if(!check){
-            animationLeft()
-        } else {
-            animationRight()
+        mStandardStart.post {
+            if(!check){
+                isCheck = false
+                mBtnOpenClose.alpha = 1f
+                mBtnOpenClose.translationX = xStart.toFloat()
+                mLockBg.background = mOffLayout
+                mLockImg.background = mOffImage
+                mLockTxt.text = mOffText
+                mSwitchEvent?.onOnOff(this, false)
+            } else {
+                isCheck = true
+                mBtnOpenClose.alpha = 1f
+                mBtnOpenClose.translationX = xEnd.toFloat()
+                mLockBg.background = mOnLayout
+                mLockImg.background = mOnImage
+                mLockTxt.text = mOnText
+                mSwitchEvent?.onOnOff(this, true)
+            }
         }
     }
 
