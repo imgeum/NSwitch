@@ -3,6 +3,7 @@ package com.neoguri.nswitch
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -28,6 +29,8 @@ class NSwitch @JvmOverloads constructor(
     private var xStart: Int = 0
     private var xCenter: Int = 0
     private var xEnd: Int = 0
+
+    private var isCheck = false
 
     private lateinit var mStandardStart: TextView
     private lateinit var mStandardEnd: TextView
@@ -215,7 +218,21 @@ class NSwitch @JvmOverloads constructor(
         return true
     }
 
+    fun setCheck(check: Boolean) {
+        if(!check){
+            animationLeft()
+        } else {
+            animationRight()
+        }
+    }
+
+    fun getCheck(): Boolean {
+        return isCheck
+    }
+
+
     private fun animationLeft() {
+        isCheck = false
         mBtnOpenClose.animate().translationX(xStart.toFloat()).setDuration(150).withEndAction {
             mBtnOpenClose.alpha = 1f
             mBtnOpenClose.translationX = xStart.toFloat()
@@ -227,6 +244,7 @@ class NSwitch @JvmOverloads constructor(
     }
 
     private fun animationRight() {
+        isCheck = true
         mBtnOpenClose.animate().translationX(xEnd.toFloat()).setDuration(150).withEndAction {
             mBtnOpenClose.alpha = 1f
             mBtnOpenClose.translationX = xEnd.toFloat()

@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity(), NSwitch.SwitchEventListener {
         setContentView(view)
 
         mBinding.mySwitch.setOnSwitchEvent(this)
+        mBinding.mySwitch.setCheck(true)
+
     }
 
     override fun onOnOff(view: View, boolean: Boolean) {

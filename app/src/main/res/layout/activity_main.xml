@@ -18,8 +18,6 @@
             app:switchBackBorder="@drawable/back_border"
             app:switchLayoutOn="@drawable/on_layout"
             app:switchLayoutOff="@drawable/off_layout"
-            app:switchImageOn="@drawable/on"
-            app:switchImageOff="@drawable/off"
             app:switchBackTextOn="on"
             app:switchBackTextOff="off"
             app:switchTextOn="on"
