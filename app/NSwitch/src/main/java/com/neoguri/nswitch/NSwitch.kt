@@ -220,10 +220,13 @@ class NSwitch @JvmOverloads constructor(
 
     fun setCheck(check: Boolean) {
         mStandardStart.post {
+            val start = mStandardStart.translationX.toInt()
+            val end = mStandardStart.translationX.toInt() + mStandardStart.width
+
             if(!check){
                 isCheck = false
                 mBtnOpenClose.alpha = 1f
-                mBtnOpenClose.translationX = xStart.toFloat()
+                mBtnOpenClose.translationX = start.toFloat()
                 mLockBg.background = mOffLayout
                 mLockImg.background = mOffImage
                 mLockTxt.text = mOffText
@@ -231,7 +234,7 @@ class NSwitch @JvmOverloads constructor(
             } else {
                 isCheck = true
                 mBtnOpenClose.alpha = 1f
-                mBtnOpenClose.translationX = xEnd.toFloat()
+                mBtnOpenClose.translationX = end.toFloat()
                 mLockBg.background = mOnLayout
                 mLockImg.background = mOnImage
                 mLockTxt.text = mOnText
