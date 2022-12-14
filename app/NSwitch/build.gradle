@@ -15,7 +15,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.neoguri.nswitch'
                 artifactId = 'nswitch'
-                version = '1.0.8'
+                version = '1.0.9'
             }
             // Creates a Maven publication called “debug”.
             debug(MavenPublication) {
@@ -24,7 +24,7 @@ afterEvaluate {
 
                 groupId = 'com.neoguri.nswitch'
                 artifactId = 'nswitch'
-                version = '1.0.8'
+                version = '1.0.9'
             }
         }
     }
@@ -37,7 +37,7 @@ android {
         minSdk 21
         targetSdk 31
         versionCode 1
-        versionName "1.0.8"
+        versionName "1.0.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
