@@ -164,6 +164,7 @@ class NSwitch @JvmOverloads constructor(
         when (action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {
                 xDelta = (xx - mBtnOpenClose.translationX).toInt()
+                mSwitchEvent?.onDown()
             }
 
             MotionEvent.ACTION_UP -> {
@@ -178,6 +179,7 @@ class NSwitch @JvmOverloads constructor(
                         animationRight()
                     }
                 }
+                mSwitchEvent?.onUp()
                 v.performClick()
             }
 
@@ -280,6 +282,8 @@ class NSwitch @JvmOverloads constructor(
 
     interface SwitchEventListener {
         fun onOnOff(view: View, boolean: Boolean)
+        fun onDown()
+        fun onUp()
     }
 
 }

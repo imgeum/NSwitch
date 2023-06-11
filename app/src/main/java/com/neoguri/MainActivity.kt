@@ -30,5 +30,11 @@ class MainActivity : AppCompatActivity(), NSwitch.SwitchEventListener {
             Toast.makeText(this, "off", Toast.LENGTH_SHORT).show()
         }
     }
+    
+    override fun onDown() {
+    }
+    
+    override fun onUp() {
+    }
 
 }
